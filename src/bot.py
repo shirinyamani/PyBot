@@ -1,6 +1,7 @@
 import telebot
 import os
 from loguru import logger
+from src.utils.io import write_json
 
 class Bot:
 	def __init__(self):
@@ -9,9 +10,10 @@ class Bot:
 
 	def run(self):
 		logger.info("Bot is working...")
-		self.bot.polling()
+		self.bot.infinity_polling()
 
 	def echo_all(self,message):
+		write_json(message.json, 'message.json')
 		self.bot.reply_to(message, message.text)
 
 if __name__ =="__main__":
