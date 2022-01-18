@@ -2,6 +2,7 @@ import telebot
 import os
 from loguru import logger
 from src.constants import keyboards
+from src.utils.io import write_json
 import emoji
 
 class Bot:
@@ -14,7 +15,7 @@ class Bot:
 		self.bot.infinity_polling()
 
 	def echo_all(self,message):
-		#write_json(message.json, 'message.json')
+		write_json(message.json, 'message.json')
 		self.bot.send_message(message.chat.id, message.text,
 		reply_markup=keyboards.main_keyboard)
 
