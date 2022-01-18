@@ -1,14 +1,8 @@
 import telebot
 import os
 from loguru import logger
-from src.utils.io import write_json
-from telebot import types
-
-
-markup = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
-itembtn1 = types.KeyboardButton('Help')
-itembtn2 = types.KeyboardButton('Setting')
-markup.add(itembtn1, itembtn2)
+from src.constants import keyboards
+import emoji
 
 class Bot:
 	def __init__(self):
@@ -20,9 +14,10 @@ class Bot:
 		self.bot.infinity_polling()
 
 	def echo_all(self,message):
-		write_json(message.json, 'message.json')
+		#write_json(message.json, 'message.json')
+		print(emoji.demojize(message.text))
 		self.bot.send_message(message.chat.id, message.text,
-		reply_markup=markup)
+		reply_markup=keyboards.main_keyboard)
 
 if __name__ =="__main__":
 	logger.info('Bot started')
