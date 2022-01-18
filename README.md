@@ -1,2 +1,7 @@
-# PyBot
-Telegram Bot for unknown messaging.
+# Template for Telegram Bot
+Template for creating Telegram Bots
+# How to run?
+
+1. Export Python path via: `PYTHONPATH=${PWD}`
+2. Export you BOT_TOKEN
+3. Run `python src/bot.py` in your Terminal
